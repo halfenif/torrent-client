@@ -85,6 +85,7 @@ func Open(path string) (TorrentFile, error) {
 
 	bto := bencodeTorrent{}
 	err = bencode.Unmarshal(file, &bto)
+
 	if err != nil {
 		return TorrentFile{}, err
 	}
@@ -134,5 +135,6 @@ func (bto *bencodeTorrent) toTorrentFile() (TorrentFile, error) {
 		Length:      bto.Info.Length,
 		Name:        bto.Info.Name,
 	}
+
 	return t, nil
 }
